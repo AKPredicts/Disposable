@@ -6,7 +6,8 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.22.1"
+    "express": "^4.22.1",
+    "mailparser": "^3.9.6"
   },
   "description": "",
   "keywords": [],
