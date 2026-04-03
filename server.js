@@ -34,7 +34,7 @@ app.post('/incoming', async (req, res) => {
 
         // Extract envelope fields (CatchMail sends these separately)
         const from = body.from || body.sender || body.mailfrom || 'unknown@unknown.com';
-        const to   = body.to   || body.recipient || body.rcpt || body.envelope_to || 'unknown@snipertoolx.com';
+        const to = body.to || body.recipient || body.rcpt || body.envelope_to || 'unknown@snipertoolx.com';
         const subject = body.subject || '(No Subject)';
 
         console.log('FROM:', from);
@@ -46,14 +46,15 @@ app.post('/incoming', async (req, res) => {
         // Parse the raw MIME email
         const parsed = await simpleParser(rawEmail);
 
-        const targetEmail = (parsed.to?.text || to).toLowerCase().trim();
+        const rawTo = parsed.to?.value?.[0]?.address || parsed.to?.text || to;
+        const targetEmail = rawTo.toLowerCase().trim().replace(/^.*<(.+)>.*$/, '$1');
 
         const emailData = {
-            from:      parsed.from?.text || from,
-            to:        targetEmail,
-            subject:   parsed.subject   || subject,
-            text:      parsed.text      || '(No plain text)',
-            html:      parsed.html      || '',
+            from: parsed.from?.text || from,
+            to: targetEmail,
+            subject: parsed.subject || subject,
+            text: parsed.text || '(No plain text)',
+            html: parsed.html || '',
             timestamp: Date.now()
         };
 
