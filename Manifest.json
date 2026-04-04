@@ -1,0 +1,17 @@
+{
+  "name": "AKPredicts",
+  "short_name": "AKPredicts",
+  "description": "Disposable throwaway email — no signup, auto-expires",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%23080808'/%3E%3Cpolygon points='96,20 140,73 124,152 68,152 52,73' fill='%2339ff8a'/%3E%3Cpath d='M80 90l16 20 16-20' fill='none' stroke='%23000' stroke-width='8'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}
